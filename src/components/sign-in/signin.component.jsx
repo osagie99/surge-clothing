@@ -2,6 +2,7 @@ import React from "react";
 import './signin.styles.scss'
 import CustomButton from '../customButton/customButton.component'
 import FormInput from '../form-input/form-input.component'
+//  bring in our singInWithGoogle from the firebase utils
 import {auth, signInWithGoogle} from '../../firebase/firebase.utils'
 
 class SignIn extends React.Component {
@@ -58,6 +59,7 @@ class SignIn extends React.Component {
               />
               <div className="buttons">
               <CustomButton type="submit">Sign in</CustomButton>
+              {/* onClick call the signingwithgoogle from the firebase util */}
               <CustomButton onClick={signInWithGoogle} isGoogleSignin>Sign in with Google</CustomButton>
               </div>
             </form>

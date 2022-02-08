@@ -3,6 +3,7 @@ import './header.styles.scss'
 import {ReactComponent as Logo} from '../../assets/084 crown.svg'
 import {Link} from "react-router-dom"
 import {auth} from '../../firebase/firebase.utils'
+import { connect } from "react-redux";
 
 const Header = ({currentUser}) => (
 <div className="header">
@@ -28,6 +29,13 @@ const Header = ({currentUser}) => (
 </div>
 
 )
-
-
-export default Header
+// This is the function that will use to bring in our reducers
+// argument state is the root reducer
+// currentUser is the name of the props we want to pass to this component
+// and it goes into state (root reducer) and then to the user key in rootReducer which points to the userReducer
+//  and in turn in the user reducer get the value for the currentUser 
+const mapStateToProps = state => ({
+    currentUser: state.user.currentUser
+})
+// we pass two func to the connect whihc is an high order component
+export default connect(mapStateToProps)(Header)
