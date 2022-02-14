@@ -34,6 +34,7 @@ const Header = ({currentUser}) => (
 // currentUser is the name of the props we want to pass to this component
 // and it goes into state (root reducer) and then to the user key in rootReducer which points to the userReducer
 //  and in turn in the user reducer get the value for the currentUser 
+//  syntax == propsWeWantToPass: rootreducer.rootreducerKEY.valuefromrootreducer
 const mapStateToProps = state => ({
     currentUser: state.user.currentUser
 })
