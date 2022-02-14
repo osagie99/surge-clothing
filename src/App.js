@@ -65,6 +65,7 @@ class App extends React.Component {
           <Route path="/shop" component={ShopComponent} />
           <Route
             path="/signin"
+            // render with a func to check if currentUser !null and render
             render={()=> this.props.currentUser ? <Redirect to="/" /> : <Authentication />}
           />
         </Switch>
