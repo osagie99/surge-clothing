@@ -44,5 +44,5 @@ const mapStateToProps = ({ user: { currentUser }, cart: { hidden } }) => ({
   currentUser,
   hidden,
 });
-// we pass two func to the connect whihc is an high order component
+// we pass two func to the connect which is an high order component
 export default connect(mapStateToProps)(Header);

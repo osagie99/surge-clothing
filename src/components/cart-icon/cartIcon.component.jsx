@@ -11,8 +11,8 @@ const CartIcon = ({toggleCart}) => (
     </div>
 )
 
-const maspDispatchToProps = dispatch => ({
+const mapDispatchToProps = dispatch => ({
     toggleCart: () => dispatch(toggleCart())
 })
 
-export default connect(null, maspDispatchToProps)(CartIcon)
+export default connect(null, mapDispatchToProps)(CartIcon)
