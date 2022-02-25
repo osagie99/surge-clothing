@@ -29,10 +29,10 @@ class App extends React.Component {
     this.unsubscribeFromAuth = auth.onAuthStateChanged(async (userAuth) => {
       //  if there is a userAuth object
       if (userAuth) {
-        // await the userRed to check if the data exists
+        // await the userRef to check if the data exists
         const userRef = await createUserProfileDocument(userAuth);
         userRef.onSnapshot((snapshot) => {
-          // we cann destructed setCurrentUser and pass it a action.payload of the user
+          // we call destructed setCurrentUser and pass it a action.payload of the user
           setCurrentUser({
             id: snapshot.id,
             ...snapshot.data(),
