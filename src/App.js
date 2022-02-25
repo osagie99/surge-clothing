@@ -9,6 +9,9 @@ import ShopComponent from "./pages/shop/shop.component";
 import Authentication from "./pages/authentication/authentication.component";
 // import the auth from firebase
 import { auth, createUserProfileDocument } from "./firebase/firebase.utils";
+import {selectCurrentUser} from './redux/user/user.selector'
+import {createStructuredSelector} from 'reselect'
+import Checkout from './pages/checkout/checkout.component'
 
 class App extends React.Component {
   // constructor() {
@@ -68,14 +71,15 @@ class App extends React.Component {
             // render with a func to check if currentUser !null and render
             render={()=> this.props.currentUser ? <Redirect to="/" /> : <Authentication />}
           />
+          <Route exact path='/checkout' component={Checkout} />
         </Switch>
       </div>
     );
   }
 }
 
-const mapStateToProps = (state) => ({
-  currentUser: state.user.currentUser,
+const mapStateToProps = createStructuredSelector({
+  currentUser: selectCurrentUser
 });
 
 // to update out reducer value with the new setcurrentuser action we made

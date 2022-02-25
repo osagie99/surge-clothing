@@ -6,6 +6,9 @@ import { auth } from "../../firebase/firebase.utils";
 import { connect } from "react-redux";
 import CartIcon from "../cart-icon/cartIcon.component";
 import CartDropDown from "../cart-dropdown/cartDropdown.component";
+import { createStructuredSelector } from "reselect";
+import { selectCurrentUser } from "../../redux/user/user.selector";
+import { selectCartHidden } from "../../redux/cart/cart.selectors";
 
 const Header = ({ currentUser, hidden }) => (
   <div className="header">
@@ -40,9 +43,9 @@ const Header = ({ currentUser, hidden }) => (
 // and it goes into state (root reducer) and then to the user key in rootReducer which points to the userReducer
 //  and in turn in the user reducer get the value for the currentUser
 //  syntax == propsWeWantToPass: rootreducer.rootreducerKEY.valuefromrootreducer
-const mapStateToProps = ({ user: { currentUser }, cart: { hidden } }) => ({
-  currentUser,
-  hidden,
+const mapStateToProps = createStructuredSelector({
+  currentUser: selectCurrentUser,
+  hidden: selectCartHidden
 });
 // we pass two func to the connect which is an high order component
 export default connect(mapStateToProps)(Header);
